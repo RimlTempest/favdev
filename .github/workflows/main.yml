@@ -47,20 +47,12 @@ jobs:
             node_modules
           key: node-v${{ matrix.node }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '**/yarn.lock')) }}
 
-      # テスト、ビルドを行う
-      - name: Build and test
-        run: yarn build:sqlite && yarn test:start && yarn test:dev
-
-      # Visual Regression Testing
+      # Visual Regression Testing用に権限付与
       - name: Add permissions
         run: chmod 777 -R .
-      - name: Visual Regression Testing
-        run: yarn test
-      - uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: vrt-results
-          path: playwright/vrt-results
+      # テスト、ビルドを行う
+      - name: Build and Test and Visual Regression Testing
+        run: yarn build-sqlite && yarn test-start && yarn test-dev
 
       # E2E テストの結果をartifactに上げる
       - name: Upload test results
