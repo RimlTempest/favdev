@@ -2,7 +2,7 @@ import { trpc } from '../utils/trpc';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import Head from 'next/head';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { FormEvent, useCallback, useEffect, useRef, useState } from 'react';
 
 function AddMessageForm({ onMessagePost }: { onMessagePost: () => void }) {
   const addPost = trpc.post.add.useMutation();
@@ -22,7 +22,7 @@ function AddMessageForm({ onMessagePost }: { onMessagePost: () => void }) {
 
   const isTyping = trpc.post.isTyping.useMutation();
 
-  const userName = session?.user?.name;
+  const userName = session?.user?.name ?? 'guest';
   if (!userName) {
     return (
       <div className="flex justify-between w-full px-3 py-2 text-lg text-gray-200 bg-gray-800 rounded">
@@ -49,7 +49,7 @@ function AddMessageForm({ onMessagePost }: { onMessagePost: () => void }) {
   return (
     <>
       <form
-        onSubmit={async (e) => {
+        onSubmit={async (e: FormEvent<HTMLFormElement>) => {
           e.preventDefault();
           /**
            * In a real app you probably don't want to use this manually
