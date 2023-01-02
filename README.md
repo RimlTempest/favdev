@@ -109,10 +109,10 @@ yarn dx
 ```bash
 
 # 単体テスト 実行
-yarn test
+yarn test:unit
 
 # E2Eテスト 実行
-yarn test:e2e
+yarn test
 
 # 開発環境 E2Eテスト 実行
 yarn test:dev
