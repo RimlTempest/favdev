@@ -10,6 +10,9 @@ const opts = {
 };
 const config: PlaywrightTestConfig = {
   testDir: './test',
+  webServer: {
+    command: 'yarn start',
+  },
   use: {
     ...devices['Desktop Chrome'],
     baseURL: baseUrl,
