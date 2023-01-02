@@ -10,8 +10,6 @@ jobs:
       matrix:
         node: ['16.x']
         os: [ubuntu-latest]
-    container:
-      image: mcr.microsoft.com/playwright:v1.29.0-focal
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
