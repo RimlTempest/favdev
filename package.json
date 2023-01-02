@@ -1,7 +1,7 @@
 {
   "name": "favdev",
   "author": "Riml",
-  "version": "10.7.0",
+  "version": "1.0.0",
   "private": true,
   "engines": {
     "node": "^18.0.0"
@@ -13,17 +13,17 @@
     "build:3-server": "tsc --project tsconfig.server.json",
     "build:4-migrate": "prisma migrate deploy",
     "build": "run-s build:*",
-    "generate-sqlite": "prisma generate --schema=./prisma/_sqlite/schema.prisma",
-    "migrate-sqlite": "prisma migrate dev --name init --schema=./prisma/_sqlite/schema.prisma",
-    "build-sqlite": "run-s generate-sqlite migrate-sqlite build:3-server && next build",
+    "generate:sqlite": "prisma generate --schema=./prisma/_sqlite/schema.prisma",
+    "migrate:sqlite": "prisma migrate dev --name init --schema=./prisma/_sqlite/schema.prisma",
+    "build:sqlite": "run-s generate-sqlite migrate-sqlite build:3-server && next build",
     "dev:wss": "cross-env PORT=3001 tsx watch src/server/wssDevServer.ts --tsconfig tsconfig.server.json ",
     "dev:next": "next dev",
     "dev": "run-p dev:*",
-    "dev-sqlite": "run-s generate-sqlite migrate-sqlite && run-p dev:*",
+    "dev:sqlite": "run-s generate-sqlite migrate-sqlite && run-p dev:*",
     "db-up": "docker-compose up -d",
-    "db-seed": "prisma db seed",
-    "db-migrate-dev": "prisma migrate dev",
-    "db-nuke": "docker-compose down --volumes --remove-orphans",
+    "db:seed": "prisma db seed",
+    "db:migrate:dev": "prisma migrate dev",
+    "db:nuke": "docker-compose down --volumes --remove-orphans",
     "dx": "run-s db-up db-migrate-dev db-seed dev",
     "dev-nuke": "rm -rf prisma/*.db**",
     "generate": "prisma generate",
@@ -32,11 +32,10 @@
     "start": "cross-env NODE_ENV=production node dist/server/prodServer.js",
     "studio": "prisma studio",
     "lint": "eslint src --report-unused-disable-directives",
-    "lint-fix": "pnpm lint --fix",
-    "test-dev": "cross-env APP_ENV=test start-server-and-test dev-sqlite 3000 test",
-    "test-start": "cross-env APP_ENV=test WS_URL=ws://localhost:3000 start-server-and-test start 3000 test",
+    "lint:fix": "pnpm lint --fix",
     "test": "playwright test",
-    "postinstall": "prisma generate"
+    "test:dev": "cross-env APP_ENV=test start-server-and-test dev-sqlite 3000 test",
+    "test:start": "cross-env APP_ENV=test WS_URL=ws://localhost:3000 start-server-and-test start 3000 test"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -46,6 +45,12 @@
     "trailingComma": "all",
     "singleQuote": true,
     "semi": true
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "pnpm lint",
+      "pnpm lint:fix"
+    ]
   },
   "dependencies": {
     "@prisma/client": "^4.7.1",
@@ -82,6 +87,8 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
