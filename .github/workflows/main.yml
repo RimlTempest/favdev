@@ -57,3 +57,13 @@ jobs:
           name: test results
           path: |
             playwright/test-results
+
+      # Lighthouse計測
+      - name: Lighthouse
+        run: yarn add global @lhci/cli@0.10.x
+      - name: Build
+        run: yarn build
+      - name: Run Lighthouse CI
+        run: lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}

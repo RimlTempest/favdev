@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "^16.17.0"
+    "node": "^16.17.0",
+    "npm": "当プロジェクトではnpmではなくyarnを利用してください。"
   },
   "packageManager": "yarn@1.22.19",
   "scripts": {
