@@ -8,33 +8,65 @@
 
 ## 開発環境
 
-⚙️ VS Code extensions
+### ⚙️ VS Code
 
 - ESLint
 - Prettier
+- markuplint
 
-フロントエンド
+### 🗼 フロントエンド
 
-- NextJs13 / React
+feature driven 設計を参考にし実装を行っています。
+
+単体テストは Jest を利用し記述していきます。  
+結合テストは Storybook/Jest を利用し stories ファイルに記述していきます。  
+E2E テストは Playwright を利用し記述していきます。
+
+詳しくは以下を用いています ↓
+
+- NextJS 13 / React
 - next-auth [next-auth 公式サイト](https://next-auth.js.org/)
+- tailwind
+- lint
+  - eslint
+  - prettier
+  - markuplint
 
-バックエンド
+### 🔨 バックエンド
+
+tRPC を利用して実装を行っていきます。  
+ランキング編集画面にて WebSockets を利用したリアルタイム更新がされる仕組みを実現しています。  
+Prisma は DB の ORM ツールで CRUD 操作の効率化や可視化などを行ってくれます。  
+zod はバリデーションツールで入力情報などの制限をかけたりするのに利用しております。
+
+詳しくは以下を用いています ↓
 
 - tRPC [tRPC 公式サイト](https://trpc.io)
 - WebSockets
 - Prisma
+- zod
 
-バックエンド
+### 💾 DB
+
+基本的に postgres を利用しています。  
+ビルドやテスト時は sqlite で仮環境を作成します。
 
 - postgres
+- sqlite
 
-✅ テスト
+### ✅ テスト
 
+- Jest
 - Playwright [Playwright 公式サイト](https://playwright.dev/)
 
-💚 CI
+### 💚 CI
 
 - GitHub Actions
+
+### 💻 効率化
+
+- docker-compose
+- Storybook
 
 ## 環境構築
 
@@ -73,16 +105,26 @@ yarn dx
 ```bash
 
 # 単体テスト 実行
-yarn test:unit  # runs normal jest unit tests
+yarn test
 
 # E2Eテスト 実行
 yarn test:e2e
 
 # 開発環境 E2Eテスト 実行
-yarn test-dev   # runs e2e tests on dev
+yarn test:dev
 
 # 開発環境 E2Eテスト 実行
-yarn test-start # runs e2e tests on `next start` - build required before
+yarn test:start
+```
+
+効率化
+
+```bash
+# storybook 立ち上げ
+yarn storybook
+
+# prisma studio立ち上げ
+yarn studio
 ```
 
 ## Deployment
