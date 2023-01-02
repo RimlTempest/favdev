@@ -62,11 +62,15 @@ zod はバリデーションツールで入力情報などの制限をかけた�
 ### 💚 CI
 
 - GitHub Actions
+  - Lighthouse CI
+  - Playwright vrt
+  - CodeQL
 
 ### 💻 効率化
 
 - docker-compose
 - Storybook
+- renovate
 
 ## 環境構築
 
