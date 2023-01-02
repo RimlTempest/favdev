@@ -55,7 +55,7 @@ jobs:
       - name: Add permissions
         run: chmod 777 -R .
       - name: Visual Regression Testing
-        run: yarn playwright test
+        run: yarn test
       - uses: actions/upload-artifact@v3
         if: failure()
         with:
