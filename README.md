@@ -44,7 +44,7 @@ git clone https://github.com/RimlTempest/favdev.git
 cd favdev
 
 # パッケージ
-pnpm i
+yarn i
 ```
 
 ## コマンド
@@ -53,16 +53,16 @@ pnpm i
 
 ```bash
 # ビルド runs `prisma generate` + `prisma migrate` + `next build`
-pnpm build
+yarn build
 
 # DB リセット
-pnpm db-nuke
+yarn db-nuke
 
 # 開発環境 next.js + WebSocket server
-pnpm dev
+yarn dev
 
 # リセットして立ち上げ postgres db + runs migrations + seeds + starts next.js
-pnpm dx
+yarn dx
 
 ```
 
@@ -71,16 +71,16 @@ pnpm dx
 ```bash
 
 # 単体テスト 実行
-pnpm test:unit  # runs normal jest unit tests
+yarn test:unit  # runs normal jest unit tests
 
 # E2Eテスト 実行
-pnpm test:e2e
+yarn test:e2e
 
 # 開発環境 E2Eテスト 実行
-pnpm test-dev   # runs e2e tests on dev
+yarn test-dev   # runs e2e tests on dev
 
 # 開発環境 E2Eテスト 実行
-pnpm test-start # runs e2e tests on `next start` - build required before
+yarn test-start # runs e2e tests on `next start` - build required before
 ```
 
 ## Deployment

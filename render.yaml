@@ -5,13 +5,13 @@ services:
     name: trpc-websockets
     env: node
     plan: free
-    # NODE_ENV is development here in order for pnpm to install dev deps
-    buildCommand: NODE_ENV=development pnpm install && pnpm build
-    startCommand: pnpm start
+    # NODE_ENV is development here in order for yarn to install dev deps
+    buildCommand: NODE_ENV=development yarn install && yarn build
+    startCommand: yarn start
     healthCheckPath: /api/trpc/healthcheck
     # Preview Environment Initialization
     # initialDeployHook: |
-    #   pnpm run db-seed
+    #   yarn run db:seed
     envVars:
       - key: NODE_ENV
         value: production

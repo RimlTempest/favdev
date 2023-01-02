@@ -8,7 +8,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: ['18.x']
+        node: ['16.x']
         os: [ubuntu-latest]
     steps:
       - name: Checkout repo
@@ -16,34 +16,38 @@ jobs:
         with:
           fetch-depth: 0
 
-      # pnpmを利用するためにインストール
-      - uses: pnpm/action-setup@v2.2.2
-        with:
-          version: 7.12.0
-
-      - name: Use Node ${{ matrix.node }}
+      # node環境を構築
+      - name: Use Node version ${{ matrix.node }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-
-      # pnpm を利用し、lockfileがあればキャッシュするように
-      - name: Install deps (with cache)
-        run: pnpm install
+          check-latest: true
+      # packageインストールを行う
+      - run: yarn install
 
       # E2E テストを行うためにインストール
       - name: Install playwright
-        run: pnpm playwright install chromium
+        run: yarn add playwright chromium
 
       # NextJSの .next をキャッシュするように
       - name: Next.js cache
         uses: actions/cache@v3
         with:
           path: ${{ github.workspace }}/.next/cache
-          key: ${{ runner.os }}-${{ runner.node }}-${{ hashFiles('**/pnpm-lock.yaml') }}-nextjs
+          key: ${{ runner.os }}-${{ runner.node }}-${{ hashFiles('**/yarn.lock') }}-nextjs
+
+      # CI高速化のために node_modules をキャッシュ
+      - name: cache node_modules
+        id: node_modules_cache_id
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+          key: node-v${{ matrix.node-version }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
 
       # テスト、ビルドを行う
       - name: Build and test
-        run: pnpm build:sqlite && pnpm test:start && pnpm test:dev
+        run: yarn build:sqlite && yarn test:start && yarn test:dev
 
       # E2E テストの結果をartifactに上げる
       - name: Upload test results
