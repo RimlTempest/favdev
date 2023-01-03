@@ -6,6 +6,8 @@ jobs:
       NODE_ENV: test
       NEXTAUTH_SECRET: supersecret
     runs-on: ${{ matrix.os }}
+    container:
+      image: mcr.microsoft.com/playwright:v1.25.0-focal
     strategy:
       matrix:
         node: ['16.x']
