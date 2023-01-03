@@ -1,9 +1,14 @@
-{
+// lighthouse ciの設定
+const paths = ['/', '/about']
+
+const url = paths.map((path) => `http://localhost:3000${path}`)
+
+module.exports = {
   "ci": {
     "collect": {
       "numberOfRuns": 3,
       "startServerCommand": "yarn dx",
-      "url": ["http://localhost:3000/", "http://localhost:3000/about"]
+      url
     },
     "assert": {
       "preset": "lighthouse:recommended",
