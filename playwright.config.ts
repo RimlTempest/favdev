@@ -11,6 +11,12 @@ const opts = {
 const config: PlaywrightTestConfig = {
   testDir: './test',
   timeout: 60000,
+  webServer: {
+    command: 'yarn dx',
+    port: 3000,
+    timeout: 120 * 1000,
+    reuseExistingServer: !process.env.CI,
+  },
   use: {
     ...devices['Desktop Chrome'],
     baseURL: baseUrl,

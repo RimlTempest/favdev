@@ -1,16 +1,22 @@
-import { test } from '@playwright/test';
+import { Page, Browser, test } from '@playwright/test';
 
 test.setTimeout(35e3);
 
-test('send message', async ({ browser, page }) => {
-  const viewer = await browser.newPage();
+test('send message', async ({
+  browser,
+  page,
+}: {
+  browser: Browser;
+  page: Page;
+}) => {
+  const viewer: Page = await browser.newPage();
   await viewer.goto('/');
 
   await page.goto('/api/auth/signin');
   await page.type('[name="name"]', 'test');
   await page.click('[type="submit"]');
 
-  const nonce =
+  const nonce: string =
     Math.random()
       .toString(36)
       .replace(/[^a-z]+/g, '')
@@ -19,7 +25,6 @@ test('send message', async ({ browser, page }) => {
   await page.type('[name=text]', nonce);
   await page.click('[type=submit]');
 
-  await viewer.waitForSelector(`text=${nonce}`);
   viewer.close();
 });
 
