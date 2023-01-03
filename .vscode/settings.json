@@ -1,9 +1,33 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
   "cSpell.words": ["favdev"],
+  // エディタ保存時にフォーマットする
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  // パンくずリスト非表示
+  "breadcrumbs.enabled": false,
+  // インデントガイドを表示する
+  "editor.guides.indentation": false,
+  // 括弧（ブラケット）のペアガイドを表示する
+  "editor.guides.bracketPairs": true,
+  // 括弧（ブラケット）の水平方向のペアガイドを表示する
+  "editor.guides.bracketPairsHorizontal": true,
+  // 括弧（ブラケット）のペアごとに色を分ける
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  // 選択範囲のハイライトに角丸を適用する
+  "editor.roundedSelection": false,
+
+  // ts設定
+  "typescript.tsdk": "node_modules/typescript/lib",
+  // js設定
+  "javascript.suggest.autoImports": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  // フォルダ表示をコンパクト表示にしない
+  "explorer.compactFolders": false,
+  // 小文字で検索した場合、大文字小文字関係なくヒットするようにする
+  "search.smartCase": true,
+  // シャッターボタン機能を有効にする
+  "codesnap.shutterAction": "copy"
 }
