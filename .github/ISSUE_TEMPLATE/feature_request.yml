@@ -1,0 +1,25 @@
+name: 🛠 機能リクエスト名
+description: 機能説明
+title: '#0(issue number) feat: ボタンの実装'
+labels: ['新機能追加']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        機能リクエストについてどういった変更があるのかチェックリスト形式、画像等で内容を記述してください。
+  - type: textarea
+    attributes:
+      label: リクエストしたい機能について
+      description: 機能追加することによるメリット、デメリットを明確に記載お願いします。
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: フロントエンド、バックエンド、DBなどどの分類かについて
+      description: 上記分野のどういった部分の変更になるか詳細記載をお願いします。
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 付随情報について
+      description: issue や ディスカッションなど関連記事があれば issue 番号 や url の記載お願いします。

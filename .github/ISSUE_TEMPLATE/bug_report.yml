@@ -1,0 +1,42 @@
+name: 🐞 バグレポート
+description: バグについての説明
+title: '#0(issue number) bug: ボタンのレイアウト崩れ'
+labels: ['🐞 bug']
+body:
+  - type: textarea
+    attributes:
+      label: バグ、エラー内容の共有
+      description: |
+        バグ原因箇所のコードやエラー内容などを記載してください。
+        ```bash
+        npx envinfo --system --binaries
+        ```
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: バグの説明
+      description: |
+        バグの明確な説明、バグによる影響など詳しく記載してください。
+        - バグ再現環境    : ローカル環境 | 開発環境 | ステージング環境 | 本番環境
+        - バグ再現率      : 100/100% (N回中)
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: 同じようなバグなどが記事として出てきた際共有の情報
+      description: |
+        同じようなバグなどが記事として出てきた際、その URL をリスト形式で貼り付けてください。
+        - (例 CSSのスタイリングミス StackOverflow)[https://stackoverflow.com/]
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: フロントエンド、バックエンド、DBなどどの分類かについて
+      description: 上記分野のどういった部分のバグになるか詳細記載をお願いします。
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 付随情報について
+      description: issue や ディスカッションなど関連記事があれば issue 番号 や url の記載お願いします。
