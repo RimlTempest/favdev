@@ -6,8 +6,6 @@ jobs:
       NODE_ENV: test
       NEXTAUTH_SECRET: supersecret
     runs-on: ${{ matrix.os }}
-    container:
-      image: mcr.microsoft.com/playwright:v1.25.0-focal
     strategy:
       matrix:
         node: ['16.x']
@@ -47,9 +45,6 @@ jobs:
             node_modules
           key: node-v${{ matrix.node }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '**/yarn.lock')) }}
 
-      # Visual Regression Testing用に権限付与
-      - name: Add permissions
-        run: chmod 777 -R .
       # テスト、ビルドを行う
       - name: Build and Test and Visual Regression Testing
         run: yarn test
