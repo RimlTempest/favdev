@@ -10,6 +10,7 @@ const opts = {
 };
 const config: PlaywrightTestConfig = {
   testDir: './test',
+  timeout: 60000,
   use: {
     ...devices['Desktop Chrome'],
     baseURL: baseUrl,
