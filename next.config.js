@@ -1,8 +1,10 @@
-/**
- * @link https://nextjs.org/docs/api-reference/next.config.js/introduction
- */
-
-module.exports = {
+/* @type {import('next').NextConfig'} */
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  experimental: {
+    appDir: false,
+  },
   serverRuntimeConfig: {
     // Will only be available on the server side
   },
@@ -12,3 +14,5 @@ module.exports = {
     WS_URL: process.env.WS_URL,
   },
 };
+
+module.exports = nextConfig;
