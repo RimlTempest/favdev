@@ -1,5 +1,7 @@
 {
-  "cSpell.words": ["favdev"],
+  "cSpell.words": [
+    "favdev"
+  ],
   // エディタ保存時にフォーマットする
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -18,7 +20,6 @@
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
   // 選択範囲のハイライトに角丸を適用する
   "editor.roundedSelection": false,
-
   // ts設定
   "typescript.tsdk": "node_modules/typescript/lib",
   // js設定
@@ -29,5 +30,6 @@
   // 小文字で検索した場合、大文字小文字関係なくヒットするようにする
   "search.smartCase": true,
   // シャッターボタン機能を有効にする
-  "codesnap.shutterAction": "copy"
+  "codesnap.shutterAction": "copy",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }

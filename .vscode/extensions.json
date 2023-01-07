@@ -10,6 +10,8 @@
     "ms-playwright.playwright",
     "mhutchie.git-graph",
     "wix.vscode-import-cost",
-    "adpyke.codesnap"
+    "adpyke.codesnap",
+    "dsznajder.es7-react-js-snippets",
+    "mariusalchimavicius.json-to-ts"
   ]
 }
