@@ -1,3 +1,4 @@
+import { useSession, signIn, signOut } from 'next-auth/react';
 import { Disclosure, Menu } from '@headlessui/react';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import {
@@ -17,6 +18,7 @@ function classNames(...classes: any[]) {
 }
 
 export const Header = () => {
+  const { data: session } = useSession();
   return (
     <header>
       <Disclosure as="nav" className="bg-gray-800">
@@ -81,12 +83,16 @@ export const Header = () => {
                       <Menu.Button className="flex rounded-full ma-2 bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                         <div className="flex flex-row justify-center items-center">
                           <span className="sr-only">Open user menu</span>
-                          <UserName />
-                          <UserAvatar />
+                          <UserName name={session?.user?.name} />
+                          <UserAvatar image={session?.user?.image} />
                         </div>
                       </Menu.Button>
                     </div>
-                    <UserSetting />
+                    <UserSetting
+                      isSession={session}
+                      signIn={signIn}
+                      signOut={signOut}
+                    />
                   </Menu>
                 </div>
               </div>

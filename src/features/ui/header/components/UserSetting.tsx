@@ -1,15 +1,20 @@
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { Session } from 'next-auth';
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ');
 }
 
+type UserSettingProps = {
+  isSession?: Session | null;
+  signIn: () => void;
+  signOut: () => void;
+};
+
 // ユーザ設定を表示するコンポーネント
-export const UserSetting = () => {
-  const { data: session } = useSession();
-  if (!session) {
+export const UserSetting = (props: UserSettingProps) => {
+  if (!props.isSession) {
     return (
       <Transition
         as={Fragment}
@@ -24,7 +29,7 @@ export const UserSetting = () => {
           <Menu.Item>
             {({ active }) => (
               <a
-                onClick={() => signIn()}
+                onClick={() => props.signIn()}
                 className={classNames(
                   active ? 'bg-gray-100' : '',
                   'block px-4 py-2 text-sm text-gray-700',
@@ -65,7 +70,7 @@ export const UserSetting = () => {
         <Menu.Item>
           {({ active }) => (
             <a
-              onClick={() => signOut()}
+              onClick={() => props.signOut()}
               className={classNames(
                 active ? 'bg-gray-100' : '',
                 'block px-4 py-2 text-sm text-gray-700',

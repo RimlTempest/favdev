@@ -1,17 +1,19 @@
-import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 
+type UserAvatarProps = {
+  image?: string | null;
+};
+
 // アバター画像を表示するコンポーネント
-export const UserAvatar = () => {
-  const { data: session } = useSession();
-  if (!session?.user?.image) {
+export const UserAvatar = (props: UserAvatarProps) => {
+  if (!props.image) {
     return (
       <Image
         className="h-8 w-8 rounded-full"
         width={256}
         height={256}
         src="/guest.png"
-        alt=""
+        alt="guest icon"
       />
     );
   }
@@ -20,8 +22,8 @@ export const UserAvatar = () => {
       className="h-8 w-8 rounded-full"
       width={256}
       height={256}
-      src={session?.user?.image}
-      alt=""
+      src={props.image}
+      alt="user icon"
     />
   );
 };
