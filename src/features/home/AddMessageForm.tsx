@@ -1,4 +1,4 @@
-import { trpc } from '../../utils/trpc';
+import { trpc } from '@utils/trpc';
 import { signIn, useSession } from 'next-auth/react';
 import { FormEvent, useState } from 'react';
 

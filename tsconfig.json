@@ -15,6 +15,10 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": "./src",
+    "paths": {
+      "@features/*": ["features/*"],
+      "@utils/*": ["utils/*"]
+    },
     "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next.config.js"],

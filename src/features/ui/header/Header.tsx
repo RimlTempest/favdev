@@ -1,8 +1,10 @@
-import { Fragment } from 'react';
-import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { Disclosure, Menu } from '@headlessui/react';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
-import { signIn, signOut, useSession } from 'next-auth/react';
-import Image from 'next/image';
+import {
+  UserAvatar,
+  UserName,
+  UserSetting,
+} from '@features/ui/header/components';
 
 const navigation = [
   { name: '一覧', href: '#', current: true },
@@ -14,119 +16,7 @@ function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-// アバター画像を表示するコンポーネント
-const UserAvatar = () => {
-  const { data: session } = useSession();
-  if (!session?.user?.image) {
-    return (
-      <Image
-        className="h-8 w-8 rounded-full"
-        width={256}
-        height={256}
-        src="/guest.png"
-        alt=""
-      />
-    );
-  }
-  return (
-    <Image
-      className="h-8 w-8 rounded-full"
-      width={256}
-      height={256}
-      src={session?.user?.image}
-      alt=""
-    />
-  );
-};
-
-// ユーザ名を表示するコンポーネント
-const UserName = () => {
-  const { data: session } = useSession();
-  if (!session?.user?.name) {
-    return <p className="font-medium text-gray-300 truncate mr-2">ゲスト</p>;
-  }
-  return (
-    <p className="font-medium text-gray-300 truncate mr-2">
-      {session?.user?.name}
-    </p>
-  );
-};
-
-// ユーザ設定を表示するコンポーネント
-const UserSetting = () => {
-  const { data: session } = useSession();
-  if (!session) {
-    return (
-      <Transition
-        as={Fragment}
-        enter="transition ease-out duration-100"
-        enterFrom="transform opacity-0 scale-95"
-        enterTo="transform opacity-100 scale-100"
-        leave="transition ease-in duration-75"
-        leaveFrom="transform opacity-100 scale-100"
-        leaveTo="transform opacity-0 scale-95"
-      >
-        <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <Menu.Item>
-            {({ active }) => (
-              <a
-                onClick={() => signIn()}
-                className={classNames(
-                  active ? 'bg-gray-100' : '',
-                  'block px-4 py-2 text-sm text-gray-700',
-                )}
-              >
-                アカウント作成/ログイン
-              </a>
-            )}
-          </Menu.Item>
-        </Menu.Items>
-      </Transition>
-    );
-  }
-  return (
-    <Transition
-      as={Fragment}
-      enter="transition ease-out duration-100"
-      enterFrom="transform opacity-0 scale-95"
-      enterTo="transform opacity-100 scale-100"
-      leave="transition ease-in duration-75"
-      leaveFrom="transform opacity-100 scale-100"
-      leaveTo="transform opacity-0 scale-95"
-    >
-      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-        <Menu.Item>
-          {({ active }) => (
-            <a
-              href="#"
-              className={classNames(
-                active ? 'bg-gray-100' : '',
-                'block px-4 py-2 text-sm text-gray-700',
-              )}
-            >
-              プロフィール
-            </a>
-          )}
-        </Menu.Item>
-        <Menu.Item>
-          {({ active }) => (
-            <a
-              onClick={() => signOut()}
-              className={classNames(
-                active ? 'bg-gray-100' : '',
-                'block px-4 py-2 text-sm text-gray-700',
-              )}
-            >
-              ログアウト
-            </a>
-          )}
-        </Menu.Item>
-      </Menu.Items>
-    </Transition>
-  );
-};
-
-export default function Header() {
+export const Header = () => {
   return (
     <header>
       <Disclosure as="nav" className="bg-gray-800">
@@ -227,4 +117,4 @@ export default function Header() {
       </Disclosure>
     </header>
   );
-}
+};

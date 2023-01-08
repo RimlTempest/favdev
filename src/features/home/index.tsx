@@ -1,11 +1,11 @@
-import { trpc } from '../../utils/trpc';
+import { trpc } from '@utils/trpc';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { signOut, useSession } from 'next-auth/react';
 import Head from 'next/head';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AddMessageForm } from './AddMessageForm';
-import Header from 'features/ui/Header';
-import Footer from 'features/ui/Footer';
+import { Header } from '@features/ui/header';
+import { Footer } from '@features/ui/footer';
 
 export default function Home() {
   const postsQuery = trpc.post.infinite.useInfiniteQuery(
