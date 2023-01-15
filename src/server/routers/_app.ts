@@ -7,10 +7,9 @@ import { observable } from '@trpc/server/observable';
 import { clearInterval } from 'timers';
 
 export const appRouter = router({
+  // router エンドポイント設定
   healthcheck: publicProcedure.query(() => 'yay!'),
-
   post: postRouter,
-
   randomNumber: publicProcedure.subscription(() => {
     return observable<number>((emit) => {
       const int = setInterval(() => {

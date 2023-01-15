@@ -7,7 +7,8 @@ import { parse } from 'url';
 import ws from 'ws';
 
 const port = parseInt(process.env.PORT || '3000', 10);
-const dev = process.env.NODE_ENV !== 'production';
+// TODO: 認証機能を使う場合は、ここで認証機能を有効にする
+const dev = !(process.env.NODE_ENV !== 'production');
 const app = next({ dev });
 const handle = app.getRequestHandler();
 

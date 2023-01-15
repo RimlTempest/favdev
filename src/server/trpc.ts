@@ -51,7 +51,7 @@ const isAuthed = middleware(({ next, ctx }) => {
   const user = ctx.session?.user;
 
   if (!user?.name) {
-    throw new TRPCError({ code: 'UNAUTHORIZED' });
+    throw new TRPCError({ code: 'UNAUTHORIZED', message: 'Not authenticated' });
   }
 
   return next({
