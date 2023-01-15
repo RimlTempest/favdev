@@ -17,6 +17,7 @@ enum PosterSource {
   GITHUB
 }
 
+// 仮
 model Post {
   id     String       @id @default(uuid())
   name   String
@@ -27,4 +28,119 @@ model Post {
   // https://trpc.io/docs/data-transformers
   createdAt DateTime @unique @default(now())
   updatedAt DateTime @unique @default(now())
+}
+
+// NextAuth.js Models https://next-auth.js.org/adapters/models
+// @see https://next-auth.js.org/schemas/models & https://next-auth.js.org/adapters/prisma
+model Account {
+  id                String  @id @default(cuid()) // 固有ID
+  userId            String // ユーザID
+  type              String // アカウント種別
+  provider          String // プロバイダー
+  providerAccountId String // プロバイダーアカウントID
+  refresh_token     String? // @db.Text           // リフレッシュトークン
+  access_token      String? // @db.Text           // アクセストークン
+  expires_at        Int? // 有効期限
+  token_type        String? // トークンタイプ
+  scope             String? // スコープ
+  id_token          String? // @db.Text           // IDトークン
+  session_state     String? // セッションステート
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid()) // 固有ID
+  sessionToken String   @unique // セッショントークン
+  userId       String // ユーザID
+  expires      DateTime // 有効期限
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String         @id @default(cuid()) // 固有ID
+  name          String? // 名前
+  email         String?        @unique // メールアドレス
+  emailVerified DateTime? // メールアドレス確認日時
+  image         String? // 画像
+  accounts      Account[] // アカウント
+  sessions      Session[] // セッション
+  favorite      Favorites[] // お気に入り
+  Ranking       Ranking[]
+  ArticleNotes  ArticleNotes[]
+}
+
+model VerificationToken {
+  identifier String // ユーザID
+  token      String   @unique // トークン
+  expires    DateTime // 有効期限
+
+  @@unique([identifier, token])
+}
+
+// カテゴリ情報
+model Categories {
+  id            String         @id @default(uuid())
+  name          String
+  description   String?
+  ranking       Ranking[]
+  article_notes ArticleNotes[]
+}
+
+// お気に入り情報
+model Favorites {
+  id              String       @id @default(uuid())
+  userId          String
+  rankingId       String
+  article_notesId String
+  user            User         @relation(fields: [userId], references: [id])
+  ranking         Ranking      @relation(fields: [rankingId], references: [id])
+  article_note    ArticleNotes @relation(fields: [article_notesId], references: [id])
+}
+
+// ランキング情報
+model RankingInfo {
+  id          String    @id @default(uuid())
+  rank        Int
+  url         String
+  description String?
+  ranking     Ranking[]
+}
+
+// ランキングページ情報
+model Ranking {
+  id           String      @id @default(uuid())
+  name         String
+  description  String?
+  visible      Boolean     @default(false)
+  createdAt    DateTime    @unique @default(now())
+  updatedAt    DateTime    @unique @default(now())
+  // 外部キー
+  rankingId    String
+  categoryId   String
+  userId       String
+  // リレーション
+  ranking_info RankingInfo @relation(fields: [rankingId], references: [id])
+  category     Categories  @relation(fields: [categoryId], references: [id])
+  user         User        @relation(fields: [userId], references: [id])
+  favolite     Favorites[]
+}
+
+// 記事メモページ情報
+model ArticleNotes {
+  id          String      @id @default(uuid())
+  name        String
+  url         String
+  description String?
+  visible     Boolean     @default(false)
+  createdAt   DateTime    @unique @default(now())
+  updatedAt   DateTime    @unique @default(now())
+  // 外部キー
+  categoryId  String
+  userId      String
+  // リレーション
+  category    Categories  @relation(fields: [categoryId], references: [id])
+  user        User        @relation(fields: [userId], references: [id])
+  favolite    Favorites[]
 }
