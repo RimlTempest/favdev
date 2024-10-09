@@ -1128,12 +1128,19 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.16.3", "@babel/runtime@^7.17.8", "@babel/runtime@^7.18.9", "@babel/runtime@^7.5.0", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.17.8", "@babel/runtime@^7.18.9", "@babel/runtime@^7.5.0", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.20.7"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.20.7.tgz#fcb41a5a70550e04a7b708037c7c32f7f356d8fd"
   integrity sha512-UF0tvkUtxwAgZ5W/KrkHf0Rn0fdnLDU9ScxBrEVNUprE/MzirjK4MJUX1/BVDv00Sv8cljtukVK1aky++X1SjQ==
   dependencies:
     regenerator-runtime "^0.13.11"
+
+"@babel/runtime@^7.20.13":
+  version "7.25.7"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.25.7.tgz#7ffb53c37a8f247c8c4d335e89cdf16a2e0d0fb6"
+  integrity sha512-FjoyLe754PMiYsFaN5C94ttGiOmBNYTf6pLr4xXHAT5uctHb092PBszndLDR5XA/jghQvn4n7JMHl7dmTgbm9w==
+  dependencies:
+    regenerator-runtime "^0.14.0"
 
 "@babel/runtime@~7.5.4":
   version "7.5.5"
@@ -1961,10 +1968,10 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@panva/hkdf@^1.0.1":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@panva/hkdf/-/hkdf-1.0.2.tgz#bab0f09d09de9fd83628220d496627681bc440d6"
-  integrity sha512-MSAs9t3Go7GUkMhpKC44T58DJ5KGk2vBo+h1cqQeqlMfdGkxaVB78ZWpv9gYi/g2fa4sopag9gJsNvS8XGgWJA==
+"@panva/hkdf@^1.0.2":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@panva/hkdf/-/hkdf-1.2.1.tgz#cb0d111ef700136f4580349ff0226bf25c853f23"
+  integrity sha512-6oclG6Y3PiDFcoyk8srjLfVKyMfVCKJ27JwNPViuXziFpmdz+MZnZN/aKY0JGXgYuO/VghU0jcOAZgWXZ1Dmrw==
 
 "@pkgr/utils@^2.3.1":
   version "2.3.1"
@@ -9488,10 +9495,10 @@ joi@^17.6.0:
     "@sideway/formula" "^3.0.0"
     "@sideway/pinpoint" "^2.0.0"
 
-jose@^4.10.0, jose@^4.9.3:
-  version "4.11.2"
-  resolved "https://registry.yarnpkg.com/jose/-/jose-4.11.2.tgz#d9699307c02e18ff56825843ba90e2fae9f09e23"
-  integrity sha512-njj0VL2TsIxCtgzhO+9RRobBvws4oYyCM8TpvoUQwl/MbIM3NFJRR9+e6x0sS5xXaP1t6OCBkaBME98OV9zU5A==
+jose@^4.15.5, jose@^4.15.9:
+  version "4.15.9"
+  resolved "https://registry.yarnpkg.com/jose/-/jose-4.15.9.tgz#9b68eda29e9a0614c042fa29387196c7dd800100"
+  integrity sha512-1vUQX+IdDMVPj4k8kOxgUqlcK518yluMuGZwqlr44FS1ppZB/5GWh4rZG89erpOBOJjU/OBsnCVFfapsRz6nEA==
 
 js-sdsl@^4.1.4:
   version "4.2.0"
@@ -10529,16 +10536,16 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   integrity sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==
 
 next-auth@^4.14.0:
-  version "4.18.7"
-  resolved "https://registry.yarnpkg.com/next-auth/-/next-auth-4.18.7.tgz#4ca61f427866fcfe133afa9138a886d0c2b5ca55"
-  integrity sha512-kR3s1JVPMaDuSAlFxcGyv7Ec3fdE6za71r1F77IOII5zJmW2wfkIA2xj223fM0D20ip2pzFpHfk/qN4L6l5XMA==
+  version "4.24.8"
+  resolved "https://registry.yarnpkg.com/next-auth/-/next-auth-4.24.8.tgz#82b1a2f7da5b44923720b35b29677a6e800a6619"
+  integrity sha512-SLt3+8UCtklsotnz2p+nB4aN3IHNmpsQFAZ24VLxGotWGzSxkBh192zxNhm/J5wgkcrDWVp0bwqvW0HksK/Lcw==
   dependencies:
-    "@babel/runtime" "^7.16.3"
-    "@panva/hkdf" "^1.0.1"
+    "@babel/runtime" "^7.20.13"
+    "@panva/hkdf" "^1.0.2"
     cookie "^0.5.0"
-    jose "^4.9.3"
+    jose "^4.15.5"
     oauth "^0.9.15"
-    openid-client "^5.1.0"
+    openid-client "^5.4.0"
     preact "^10.6.3"
     preact-render-to-string "^5.1.19"
     uuid "^8.3.2"
@@ -10777,7 +10784,7 @@ object-copy@^0.1.0:
     define-property "^0.2.5"
     kind-of "^3.0.3"
 
-object-hash@^2.0.1:
+object-hash@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-2.2.0.tgz#5ad518581eefc443bd763472b8ff2e9c2c0d54a5"
   integrity sha512-gScRMn0bS5fH+IuwyIFgnh9zBdo4DV+6GhygmWM9HyNJSgS0hScp1f5vjtm7oIIOiT9trXrShAkLFSc2IqKNgw==
@@ -10879,10 +10886,10 @@ objectorarray@^1.0.5:
   resolved "https://registry.yarnpkg.com/objectorarray/-/objectorarray-1.0.5.tgz#2c05248bbefabd8f43ad13b41085951aac5e68a5"
   integrity sha512-eJJDYkhJFFbBBAxeh8xW+weHlkI28n2ZdQV/J/DNfWfSKlGEf2xcfAbZTv3riEXHAhL9SVOTs2pRmXiSTf78xg==
 
-oidc-token-hash@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/oidc-token-hash/-/oidc-token-hash-5.0.1.tgz#ae6beec3ec20f0fd885e5400d175191d6e2f10c6"
-  integrity sha512-EvoOtz6FIEBzE+9q253HsLCVRiK/0doEJ2HCvvqMQb3dHZrP3WlJKYtJ55CRTw4jmYomzH4wkPuCj/I3ZvpKxQ==
+oidc-token-hash@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/oidc-token-hash/-/oidc-token-hash-5.0.3.tgz#9a229f0a1ce9d4fc89bcaee5478c97a889e7b7b6"
+  integrity sha512-IF4PcGgzAr6XXSff26Sk/+P4KZFJVuHAJZj3wgO3vX2bMdNVp/QXTP3P7CEm9V1IdG8lDLY3HhiqpsE/nOwpPw==
 
 on-finished@2.4.1:
   version "2.4.1"
@@ -10934,15 +10941,15 @@ open@^8.4.0:
     is-docker "^2.1.1"
     is-wsl "^2.2.0"
 
-openid-client@^5.1.0:
-  version "5.3.1"
-  resolved "https://registry.yarnpkg.com/openid-client/-/openid-client-5.3.1.tgz#69a5fa7d2b5ad479032f576852d40b4d4435488a"
-  integrity sha512-RLfehQiHch9N6tRWNx68cicf3b1WR0x74bJWHRc25uYIbSRwjxYcTFaRnzbbpls5jroLAaB/bFIodTgA5LJMvw==
+openid-client@^5.4.0:
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/openid-client/-/openid-client-5.7.0.tgz#61dbea7251f561e82342278063ce37c5c05347f2"
+  integrity sha512-4GCCGZt1i2kTHpwvaC/sCpTpQqDnBzDzuJcJMbH+y1Q5qI8U8RBvoSh28svarXszZHR5BAMXbJPX1PGPRE3VOA==
   dependencies:
-    jose "^4.10.0"
+    jose "^4.15.9"
     lru-cache "^6.0.0"
-    object-hash "^2.0.1"
-    oidc-token-hash "^5.0.1"
+    object-hash "^2.2.0"
+    oidc-token-hash "^5.0.3"
 
 optionator@^0.8.1:
   version "0.8.3"
@@ -11603,9 +11610,9 @@ preact-render-to-string@^5.1.19:
     pretty-format "^3.8.0"
 
 preact@^10.6.3:
-  version "10.11.3"
-  resolved "https://registry.yarnpkg.com/preact/-/preact-10.11.3.tgz#8a7e4ba19d3992c488b0785afcc0f8aa13c78d19"
-  integrity sha512-eY93IVpod/zG3uMF22Unl8h9KkrcKIRs2EGar8hwLZZDU1lkjph303V9HZBwufh2s736U6VXuhD109LYqPoffg==
+  version "10.24.2"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-10.24.2.tgz#42179771d3b06e7adb884e3f8127ddd3d99b78f6"
+  integrity sha512-1cSoF0aCC8uaARATfrlz4VCBqE8LwZwRfLgkxJOQwAlQt6ayTmi0D9OF7nXid1POI5SZidFuG9CnlXbDfLqY/Q==
 
 prelude-ls@^1.2.1:
   version "1.2.1"
@@ -12118,6 +12125,11 @@ regenerator-runtime@^0.13.11, regenerator-runtime@^0.13.2, regenerator-runtime@^
   version "0.13.11"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.11.tgz#f6dca3e7ceec20590d07ada785636a90cdca17f9"
   integrity sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==
+
+regenerator-runtime@^0.14.0:
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.14.1.tgz#356ade10263f685dda125100cd862c1db895327f"
+  integrity sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==
 
 regenerator-transform@^0.15.1:
   version "0.15.1"
